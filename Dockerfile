@@ -10,15 +10,15 @@ RUN cd $GOPATH/src/github.com/pion/ion && go mod download
 COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
 COPY cmd/ $GOPATH/src/github.com/pion/ion/cmd
 
-WORKDIR $GOPATH/src/github.com/pion/ion/cmd/avp
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /avp .
+WORKDIR $GOPATH/src/github.com/pion/ion/cmd/biz
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /biz .
 
 FROM alpine:3.12.1
 
 RUN apk --no-cache add ca-certificates
-COPY --from=0 /avp /usr/local/bin/avp
+COPY --from=0 /biz /usr/local/bin/biz
 
-COPY configs/docker/avp.toml /configs/avp.toml
+COPY configs/docker/biz.toml /configs/biz.toml
 
-ENTRYPOINT ["/usr/local/bin/avp"]
-CMD ["-c", "/configs/avp.toml"]
+ENTRYPOINT ["/usr/local/bin/biz"]
+CMD ["-c", "/configs/biz.toml"]
