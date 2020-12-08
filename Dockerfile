@@ -10,15 +10,14 @@ RUN cd $GOPATH/src/github.com/pion/ion && go mod download
 COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
 COPY cmd/ $GOPATH/src/github.com/pion/ion/cmd
 
-WORKDIR $GOPATH/src/github.com/pion/ion/cmd/biz
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /biz .
+WORKDIR $GOPATH/src/github.com/pion/ion/cmd/islb
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /islb .
 
 FROM alpine:3.12.1
-
 RUN apk --no-cache add ca-certificates
-COPY --from=0 /biz /usr/local/bin/biz
+COPY --from=0 /islb /usr/local/bin/islb
 
-COPY configs/docker/biz.toml /configs/biz.toml
+COPY configs/docker/islb.toml /configs/islb.toml
 
-ENTRYPOINT ["/usr/local/bin/biz"]
-CMD ["-c", "/configs/biz.toml"]
+ENTRYPOINT ["/usr/local/bin/islb"]
+CMD ["-c", "/configs/islb.toml"]
