@@ -3,9 +3,7 @@ FROM golang:1.14.13-stretch
 ENV GO111MODULE=on
 
 WORKDIR $GOPATH/src/github.com/pion/ion
-RUN rm -rf $GOPATH/src/github.com/*
-WORKDIR $GOPATH/src/github.com/pion/ion
-COPY go.mod go.sum ./
+COPY go1.mod  ./go.mod
 RUN cd $GOPATH/src/github.com/pion/ion && go mod download
 
 COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
