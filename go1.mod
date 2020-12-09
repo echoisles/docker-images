@@ -1,8 +1,8 @@
 module github.com/pion/ion
 
 go 1.13
-//  test456
-replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
+//  test789
+// replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
 
 require (
 	github.com/pion/ion-avp v1.6.1
