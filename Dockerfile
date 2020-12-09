@@ -4,7 +4,13 @@ ENV GO111MODULE=on
 
 WORKDIR $GOPATH/src/github.com/pion/ion
 COPY go.mod  ./go.mod
-RUN cd $GOPATH/src/github.com/pion/ion && cat go.mod && ls && rm -f go.sum  && go mod download && ls && cat go.mod
+RUN cd $GOPATH/src/github.com/pion/ion && \
+ cat go.mod && \
+ ls /go/pkg/mod/github.com/pion && \
+  rm -f go.sum  && \ 
+  go mod download  && \
+  cat go.mod && \
+  ls /go/pkg/mod/github.com/pion
 
 COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
 COPY cmd/ $GOPATH/src/github.com/pion/ion/cmd
