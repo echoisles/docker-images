@@ -3,6 +3,7 @@ module github.com/pion/ion
 go 1.13
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
+replace github.com/pion/ion-sfu => github.com/pion/ion-sfu v1.5.0
 // test 111
 require (
 	github.com/coreos/etcd v3.3.25+incompatible // indirect
@@ -17,7 +18,7 @@ require (
 	github.com/notedit/sdp v0.0.4
 	github.com/pion/ion-avp v1.6.1
 	github.com/pion/ion-log v1.0.0
-	// github.com/pion/ion-sfu v1.5.0
+	github.com/pion/ion-sfu v1.5.0
 	github.com/pion/webrtc/v3 v3.0.0-beta.14
 	github.com/sourcegraph/jsonrpc2 v0.0.0-20200429184054-15c2290dcb37
 	github.com/spf13/pflag v1.0.5 // indirect
