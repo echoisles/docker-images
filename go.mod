@@ -3,7 +3,7 @@ module github.com/pion/ion
 go 1.13
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
-replace github.com/pion/ion-sfu => github.com/pion/ion-sfu v1.5.0
+replace github.com/pion/ion-sfu => github.com/pion/ion-sfu latest
 // test 111
 require (
 	github.com/coreos/etcd v3.3.25+incompatible // indirect
