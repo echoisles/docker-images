@@ -10,6 +10,10 @@ COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
 COPY cmd/ $GOPATH/src/github.com/pion/ion/cmd
 
 WORKDIR $GOPATH/src/github.com/pion/ion/cmd/sfu
+
+# registry.cn-hangzhou.aliyuncs.com/mememe/mydocker:pionwebrtc-ion-latest-sfu-v1.1.11
+# container=test1 image= && docker run -d --name ${container} --hostname ${container} ${image} ping 127.0.0.1
+
 # RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /sfu .
 
 # FROM alpine:3.12.1
