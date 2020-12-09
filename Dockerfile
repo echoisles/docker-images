@@ -6,7 +6,7 @@ WORKDIR $GOPATH/src/github.com/pion/ion
 COPY go.mod  ./go.mod
 RUN cd $GOPATH/src/github.com/pion/ion && \
  cat go.mod && \
- ls /go/pkg/mod/github.com/pion && \
+# ls /go/pkg/mod/github.com/pion && \
   rm -f go.sum  && \ 
   go mod download  && \
   cat go.mod && \
