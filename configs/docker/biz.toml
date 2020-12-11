@@ -18,8 +18,8 @@ url = "nats://nats:4222"
 #listen ip port
 host = "0.0.0.0"
 port = "8443"
-# cert= "configs/certs/cert.pem"
-# key= "configs/certs/key.pem"
+cert= "/configs/certs/cert.pem"
+key= "/configs/certs/key.pem"
 path = "/ws"
 
 [signal.auth_connection]

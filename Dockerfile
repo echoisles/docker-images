@@ -1,4 +1,4 @@
-FROM golang:1.14.12-stretch
+FROM golang:1.14.13-stretch
 
 ENV GO111MODULE=on
 
@@ -10,15 +10,16 @@ RUN cd $GOPATH/src/github.com/pion/ion && go mod download
 COPY pkg/ $GOPATH/src/github.com/pion/ion/pkg
 COPY cmd/ $GOPATH/src/github.com/pion/ion/cmd
 
-WORKDIR $GOPATH/src/github.com/pion/ion/cmd/sfu
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /sfu .
+WORKDIR $GOPATH/src/github.com/pion/ion/cmd/biz
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /biz .
 
 FROM alpine:3.12.1
 
 RUN apk --no-cache add ca-certificates
-COPY --from=0 /sfu /usr/local/bin/sfu
+COPY --from=0 /biz /usr/local/bin/biz
 
-COPY configs/docker/sfu.toml /configs/sfu.toml
+COPY configs/docker/biz.toml /configs/biz.toml
+COPY configs/docker/certs /configs/certs
 
-ENTRYPOINT ["/usr/local/bin/sfu"]
-CMD ["-c", "/configs/sfu.toml"]
+ENTRYPOINT ["/usr/local/bin/biz"]
+CMD ["-c", "/configs/biz.toml"]
