@@ -1,0 +1,22 @@
+## 上传镜像
+git tag release-vmedia-server-v2.1.42
+git push --tags
+
+
+
+## docker-compose.yml
+version: "3.7"
+services:
+  rtmp-server:
+    image: registry.cn-hangzhou.aliyuncs.com/mememe/mydocker:media-server-v2.1.42 // 使用镜像
+    command: ""
+    ports:
+      - 1935:1935
+      - 8000:8000
+    networks:
+      - rtmpnet
+networks:
+  rtmpnet:
+    external: true
+    name: rtmpnet
+    driver: bridge
