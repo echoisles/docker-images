@@ -86,13 +86,13 @@ rm -rf /var/cache/apk/*
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm i
+# RUN npm i
 
-COPY . .
+# COPY . .
 
-EXPOSE 1935 8000
+# EXPOSE 1935 8000
 
 ## CMD ["node","app.js"]
 
