@@ -1,1 +1,8 @@
-From node/media/server:v2.1.40
+FROM illuspas/node-media-server
+
+
+
+
+
+
+
